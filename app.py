@@ -23,7 +23,7 @@ def detect():
     video.save(os.path.join(uploads_dir, secure_filename(video.filename)))
     print(video)
     subprocess.run("ls")
-    subprocess.run(['python3', '../yolov5/detect.py', '--source', os.path.join(uploads_dir, secure_filename(video.filename))])
+    subprocess.run(['python3', 'detect.py', '--source', os.path.join(uploads_dir, secure_filename(video.filename))])
 
     # return os.path.join(uploads_dir, secure_filename(video.filename))
     obj = secure_filename(video.filename)
