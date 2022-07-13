@@ -6,6 +6,7 @@ import subprocess
 
 app = Flask(__name__)
 
+
 uploads_dir = os.path.join(app.instance_path, 'uploads')
 
 os.makedirs(uploads_dir, exist_ok=True)
@@ -28,6 +29,13 @@ def detect():
     # return os.path.join(uploads_dir, secure_filename(video.filename))
     obj = secure_filename(video.filename)
     return obj
+
+@app.route("/opencam", methods=['GET'])
+def opencam():
+    print("here")
+    subprocess.run(['python3', 'detect.py', '--source', '0'])
+    return "done"
+    
 
 @app.route('/return-files', methods=['GET'])
 def return_file():
